@@ -47,8 +47,8 @@ Run the following commands to create a new bucket and copy tutorial files to the
 Make sure you're in this `transcoding` directory.
 
 ```
-gsutil mb -p [PROJECT_ID] -b on -l US gs://[BUCKET_NAME]
-gsutil cp -R transcode.sh input gs://[BUCKET_NAME]
+gcloud storage buckets create gs://[BUCKET_NAME] --project=[PROJECT_ID] --uniform-bucket-level-access --location=US
+gcloud storage cp --recursive transcode.sh input gs://[BUCKET_NAME]
 ```
 
 To learn more about creating storage buckets, see the [Cloud Storage documentation](https://cloud.google.com/storage/docs/creating-buckets).
@@ -237,7 +237,7 @@ status:
 The job stores encoded video files in the same Cloud Storage bucket. To list the objects, run:
 
 ```
-gsutil ls -lR gs://[BUCKET_NAME]/output
+gcloud storage ls --long --recursive gs://[BUCKET_NAME]/output
 ```
 
 It displays a list of the encoded video files.
@@ -256,7 +256,7 @@ You can also browse the objects with the [Console](https://console.cloud.google.
 To download the files, run:
 
 ```
-gsutil cp -R gs://[BUCKET_NAME]/output .
+gcloud storage cp --recursive gs://[BUCKET_NAME]/output .
 ```
 
 You will find the new files in the output directory inside the current directory.
