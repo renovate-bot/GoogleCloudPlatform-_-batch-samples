@@ -15,7 +15,7 @@ function install_docker_requirements() {
     dnf -y install containerd.io || exit_error "containerd.io installation failed."
     dnf -y install docker-compose-plugin || exit_error "docker-compose-plugin installation failed."
     # Install docker credential helper.
-    CLOUDSDK_PYTHON=/usr/bin/python3 gsutil cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
+    CLOUDSDK_PYTHON=/usr/bin/python3 gcloud storage cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
     tar -xzf docker-credential-gcr.tar.gz
     chmod +x docker-credential-gcr
     cp docker-credential-gcr /usr/bin/
