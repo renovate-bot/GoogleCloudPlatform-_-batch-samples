@@ -16,7 +16,7 @@ function install_docker_requirements() {
     yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin || exit_error "docker installation failed."
      # Install docker credential helper.
     yum install -y python3 || exit_error "python3 installation failed."
-    CLOUDSDK_PYTHON=/usr/bin/python3 gsutil cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
+    CLOUDSDK_PYTHON=/usr/bin/python3 gcloud storage cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
     tar -xzf docker-credential-gcr.tar.gz
     chmod +x docker-credential-gcr
     cp docker-credential-gcr /usr/bin/

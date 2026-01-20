@@ -17,7 +17,7 @@ function install_docker_requirements() {
      # Install docker credential helper.
     yum install -y python3 || exit_error "python3 installation failed."
     MACHINE="$(uname -m)"
-    CLOUDSDK_PYTHON=/usr/bin/python3 gsutil cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
+    CLOUDSDK_PYTHON=/usr/bin/python3 gcloud storage cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
     tar -xzf docker-credential-gcr.tar.gz
     chmod +x docker-credential-gcr
     cp docker-credential-gcr /usr/bin/

@@ -20,7 +20,7 @@ function install_docker_requirements() {
     apt-get install --yes docker-ce docker-ce-cli containerd.io docker-compose-plugin || exit_error "docker installation failed."
     # Install docker credential helper.
     MACHINE="$(uname -m)"
-    CLOUDSDK_PYTHON=/usr/bin/python3 gsutil cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
+    CLOUDSDK_PYTHON=/usr/bin/python3 gcloud storage cp gs://batch-agent-prod-us/docker-credential-gcr-tool/docker-credential-gcr-"$MACHINE".tar.gz docker-credential-gcr.tar.gz
     tar -xzf docker-credential-gcr.tar.gz
     chmod +x docker-credential-gcr
     cp docker-credential-gcr /usr/local/bin/
